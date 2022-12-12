@@ -74,6 +74,7 @@ export class Runner {
       if (comment) {
         await this.update_comment(comment, section)
         core.info('Updated comment')
+        await this.add_label(pr)
       } else if (failed_runs.length > 0) {
         await this.create_comment(pr, section)
         core.info('Created comment')
@@ -171,7 +172,7 @@ export class Runner {
       owner: this.env.owner,
       repo: this.env.repo,
       issue_number: pr.number,
-      labels: ["waiting-response"]
+      labels: "waiting-response"
     })
   }
 
